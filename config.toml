@@ -1,4 +1,36 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
-theme="minimo"
+baseURL = "http://www.github.pcattori.io"
+title = "Pedro Cattori"
+theme = "minimo"
+
+enableEmoji = true
+paginate = 10
+pygmentsCodefences = true
+
+[params.info]
+title404 = "Nothing's here!"
+
+[params.assets]
+# TODO
+favicon = "favicon.ico"
+
+[params.copyright]
+holder = "Pedro Cattori"
+startYear = "2019"
+
+[params.settings]
+showReadingTime = true
+showLastmod = true
+accentColor = "#00adb5"
+
+[params.widgets]
+homepage = ["recent_posts"]
+footer = ["social_menu"]
+
+[params.social]
+email = "pcattori@gmail.com"
+github = "pcattori"
+linkedin = "pcattori"
+youtube = "UCIUapzIuBFsF3z220FpwYSQ"
+
+[blackfriday]
+hrefTargetBlank = true
