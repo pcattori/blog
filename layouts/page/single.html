@@ -1,0 +1,8 @@
+{{ partial "header" . }}
+
+<article lang='{{ .Params.lang | default .Lang }}' class='page'>
+  {{ partial "page/header" . }}
+  {{ partial "page/content" . }}
+</article>
+
+{{ partial "footer" . }}
