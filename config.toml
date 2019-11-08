@@ -10,7 +10,6 @@ pygmentsCodefences = true
 title404 = "Nothing's here!"
 
 [params.assets]
-# TODO
 favicon = "favicon.ico"
 
 [params.copyright]
