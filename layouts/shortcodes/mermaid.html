@@ -1,0 +1,4 @@
+<script async src="https://unpkg.com/mermaid@8.4.2/dist/mermaid.min.js"></script>
+<div class="mermaid" align="{{ if .Get "align" }}{{ .Get "align" }}{{ else }}center{{ end }}">
+  {{ safeHTML .Inner }}
+</div>
