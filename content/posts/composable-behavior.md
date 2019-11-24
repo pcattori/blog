@@ -70,7 +70,7 @@ Hooks will keep our code focused on solving our problem rather than writing boil
 
 For brevity, the examples will use [inline styles](https://reactjs.org/docs/dom-elements.html#style), but I'd recommend using CSS-in-JS solutions like [emotion](https://emotion.sh/docs/introduction) instead.
 
-With that out of the way, let's look at make a reusable `Input.jsx` component.
+With that out of the way, let's look at making a reusable `Input.jsx` component.
 
 ---
 
