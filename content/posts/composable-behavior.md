@@ -4,19 +4,83 @@ date: 2019-11-14T21:07:19-05:00
 tags: [React]
 ---
 
-You don't have to spend much time developing [React](https://reactjs.org/) code to come across the old ["controlled vs uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html) debate. :atom:
+When I first learned [React](https://reactjs.org/) :atom:, it took me less than a day to run into the ol' ["controlled vs uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html) dichotomy.
+At the time, I didn't even know the terms "controlled" and "uncontrolled", but was still struggling to fit the designs in my head into those two buckets.
 
-And I think understanding composable behavior may be the Holy Grail. :trophy:
+The tension was between 2 competing goals:
 
-## Team #uncontrolled vs Team #controlled
+1. I want to make my components as **reusable** as possible
+2. My use-cases were *similar*, but **not exactly the same**...
 
-The quintessential example is the humble `<input/>`.
+Here's a checkbox component that takes care of styling and toggling when clicked.
+It used it as-is in a couple places, but then kept running into cases where I wanted more fine-grained control.
+E.g. I was using some checkboxes as filters and I wanted my *Clear filters* button to uncheck all the filter checkboxes.
+
+```jsx
+import React, { Component } from 'react'
+
+const styles = {...}
+
+class Checkbox extends Component {
+  state = { checked: false }
+
+  toggle = () => this.setState({ checked: !this.state.checked })
+
+  render() {
+    return (
+      <input
+        type='checkbox'
+        checked={this.state.checked}
+        onChange={this.toggle}
+        style={styles}
+      />
+    )
+  }
+}
+```
+
+The tension becomes apparent as I kept adding more and more props to my components to configure them to deal with the variety of use-cases.
+It looked ugly and quickly became unmaintainable.
+
+Maybe writing *truly* reusable UI components is a fool's errand.
+I gave up on finding a better way for a while and settled into writing mostly controlled components wired to Redux.
+But every time I wrote Redux code just to enable obvious, default behavior (e.g. "toggling a checkbox", "writing characters into a text input"), I longed again for a better way.
+
+I'd be lying if I pretended my persistence to find a better way wasn't tied up in my ego as a developer.
+I took pride in writing clean, reusable code in scripts and backend code.
+But here I was wrestling with a humble checkbox...
+Surely, any great software engineer should be able to write reusable UI components, no?
+
+---
+
+A couple weeks ago I had 2 epiphanies on this subject:
+
+1. From a design perspective, making everything reusable means you **don't understand the problem you are trying to solve**.
+2. The "controlled" vs "uncontrolled" is a **false dichotomy**.
+
+I realized (1) after reading the first couple chapters from [Eric Evan's "Domain-Driven Design"](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215).[^1]
+[^1]: I highly recommend the first couple chapters, but then watch [Domain-Driven Design Made Functional](https://www.youtube.com/watch?v=Up7LcbGZFuo)
+
+In the rest of this post, I want to focus on how understanding and applying "composable behavior" frees us from the shackles of (2). It is not only possible to make reusable components that can adapt to many use-cases, it's *a joy* to write and use them.
+
+## Case study: reusable input
+
+First things first: I'm going to use [React Hooks](https://reactjs.org/docs/hooks-intro.html) from here on out instead of `state` and `setState`.
+Hooks will keep our code focused on solving our problem rather than writing boilerplate code.
+
+For brevity, the examples will use [inline styles](https://reactjs.org/docs/dom-elements.html#style), but I'd recommend using CSS-in-JS solutions like [emotion](https://emotion.sh/docs/introduction) instead.
+
+With that out of the way, let's look at make a reusable `Input.jsx` component.
+
+---
 
 An *uncontrolled* `<input/>` does the obvious thing out-of-the-box. Namely, as a user types, the characters they are typing appear in the text box.
 
 ```jsx
 // UncontrolledInput.jsx
 import React, { useState } from 'react'
+
+styles = {...}
 
 const UncontrolledInput = () => {
   const [value, setValue] = useState('')
@@ -25,6 +89,7 @@ const UncontrolledInput = () => {
       type="text"
       value={value}
       onChange={e => setValue(e.target.value)}
+      style={styles}
     />
   )
 }
@@ -46,11 +111,15 @@ const App = () => {
 }
 ```
 
-An *controlled* `<input/>` needs to be wired up, but gives you the flexibility to have the `<input/>` react to other events. For example, if the `<input/>` is being used as a search box, you could wire up your app so that clicking a "Clear filters" button also wipes out the text in the `<input/>`.
+---
+
+An *controlled* `<input/>` needs to be wired up, but gives you the flexibility to have the `<input/>` react to other events. For example, if the `<input/>` is being used as a search box, you could wire up your app so that clicking a **Clear filters** button also wipes out the text in the `<input/>`.
 
 ```jsx
 // ControlledInput.jsx
 import React from 'react'
+
+styles = {...}
 
 const ControlledInput = ({ value, onChange }) => {
   return (
@@ -58,6 +127,7 @@ const ControlledInput = ({ value, onChange }) => {
       type="text"
       value={value}
       onChange={onChange}
+      style={styles}
     />
   )
 }
@@ -82,31 +152,19 @@ const App = () => {
 }
 ```
 
-The difference boils down to the control given to the user.
-Uncontrolled components say "Don't worry, I've got this for you." whereas controlled components say "You say jump, I say how high!".
-Ease of use **vs** flexibility. Choose one.
+---
 
-**But this is a false dichotomy.**
-I want both.
-And now that we have React Hooks, there's a way...
+To unify `UncontrolledInput.jsx` and `ControlledInput.jsx`, we need to let the user tells us when to do the default behavior and when to do something custom.
+The key insight will be for the user to **explicitly opt-in to default behavior**.
 
 ## Composable behavior
 
-Behold!
+Let's decouple our rendering and behavior.
 
 ```jsx
-// Input.jsx
-import React, { useState } from 'react'
+// Rendering
+import React from 'react'
 
-// basic behavior that users can easily opt-in to
-export function useOnChange(startingText='') {
-  const [value, setValue] = useState(startingText)
-  const onChange = e => setValue(e.target.value)
-  // returns a POJO in the shape of the component props
-  return { value, onChange }
-}
-
-// Note: this is the same implementation as ControlledInput
 const Input = ({ value, onChange }) => {
   return (
     <input
@@ -116,19 +174,87 @@ const Input = ({ value, onChange }) => {
     />
   )
 }
+```
 
+You'll notice that our rendering code is now the same as `ControlledInput.jsx`.
+This is great!
+Writing our components as pure functions keeps everything ultra configurable and adaptable.
+Now the only challenge is shipping some default behavior that the user can easily, ergonomically opt-in to.
+
+```jsx
+// Behavior
+import { useState } from 'react'
+
+export function useDefaultBehavior(startingText='') {
+  const [value, setValue] = useState(startingText)
+  const onChange = e => setValue(e.target.value)
+  return { value, onChange }
+}
+```
+
+The design here is to create a hook that returns a JS object in the same shape as our component props and delivers the default behavior for our component.
+Note that React hooks must have [names starting with "use"](https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook).
+
+Now we can just combine these 2 into 1 file:
+
+```jsx
+// Input.jsx
+import React, { useState } from 'react'
+
+export function useDefaultBehavior(startingText='') {
+  const [value, setValue] = useState(startingText)
+  const onChange = e => setValue(e.target.value)
+  return { value, onChange }
+}
+
+const Input = ({ value, onChange }) => {
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
+  )
+}
+```
+
+And with that, usage is as simple as:
+
+```jsx
 // App.jsx
 import React, { useState } from 'react'
 
-import Input, { useOnChange } from './Input'
+import Input, { useDefaultBehavior } from './Input'
 
 const App = () => {
-  // basic behavior
-  const defaultInputProps = useOnChange()
+  const inputDefaults = useDefaultBehavior()
 
-  // complex custom behavior
-  // only allow numbers written to the input
-  // also, allow button to clear this input
+  return (
+    <div>
+      <h1>My App</h1>
+      {/* opt-in to basic behavior by spreading the props */}
+      <Input {...inputDefaults} />
+    </div>
+  )
+}
+```
+
+We let the user **compose** the behavior with the component themselves.
+This tiny bit of wiring is still ergonomic and is a tiny price to pay for adaptability.
+
+Let's see what that adaptability looks like by trying to create another `Input` with custom behavior right next to our current, default-behavior `Input`:
+
+```jsx
+// App.jsx
+import React, { useState } from 'react'
+
+import Input, { useDefaultBehavior } from './Input'
+
+const App = () => {
+  const inputDefaults = useDefaultBehavior()
+
+  // only allow numbers written to the second input
+  // also, allow button to clear the second input
   const [value, setValue] = useState('')
   const onlyNumbers = value => {
     if (value === '' || isNaN(value)) {
@@ -142,7 +268,7 @@ const App = () => {
     <div>
       <h1>My App</h1>
       {/* opt-in to basic behavior by spreading the props */}
-      <Input {...defaultInputProps} />
+      <Input {...inputDefaults} />
 
       {/*
         wire up to complex behavior
@@ -158,10 +284,10 @@ const App = () => {
 }
 ```
 
-This is the power of composable behavior in React.
-Like the power to [compose components](https://twitter.com/dan_abramov/status/1021850499618955272)[^1], this pattern let's you skip tedious wiring logic for both the controlled and uncontrolled case.[^2]
+Behold the power of composable behavior!
+
+Like the power to [compose components](https://twitter.com/dan_abramov/status/1021850499618955272)[^1], this pattern let's you ergonomically choose between built-in behaviors and custom ones to fit the needs of every use-case in your app.
 [^1]: See [this article](https://varun.ca/flattening-deep-hierarchies-of-components/) for more on composing components
-[^2]: *Technically*, I suppose `const defaultInputProps = useOnChange()` and `{...defaultInputProps}` **is** wiring logic, but c'mon its such a small price to pay to get the best of both worlds.
 
 ## FP?
 
