@@ -94,7 +94,7 @@ const UncontrolledInput = () => {
   )
 }
 
-export default ControlledInput
+export default UncontrolledInput
 
 // App.jsx
 import React from 'react'
@@ -113,7 +113,7 @@ const App = () => {
 
 ---
 
-An *controlled* `<input/>` needs to be wired up, but gives you the flexibility to have the `<input/>` react to other events. For example, if the `<input/>` is being used as a search box, you could wire up your app so that clicking a **Clear filters** button also wipes out the text in the `<input/>`.
+A *controlled* `<input/>` needs to be wired up, but gives you the flexibility to have the `<input/>` react to other events. For example, if the `<input/>` is being used as a search box, you could wire up your app so that clicking a **Clear filters** button also wipes out the text in the `<input/>`.
 
 ```jsx
 // ControlledInput.jsx
@@ -131,6 +131,8 @@ const ControlledInput = ({ value, onChange }) => {
     />
   )
 }
+
+export default ControlledInput
 
 // App.jsx
 import React, { useState } from 'react'
@@ -174,6 +176,8 @@ const Input = ({ value, onChange }) => {
     />
   )
 }
+
+export default Input
 ```
 
 You'll notice that our rendering code is now the same as `ControlledInput.jsx`.
@@ -216,6 +220,8 @@ const Input = ({ value, onChange }) => {
     />
   )
 }
+
+export default Input
 ```
 
 And with that, usage is as simple as:
@@ -286,8 +292,70 @@ const App = () => {
 
 Behold the power of composable behavior!
 
-Like the power to [compose components](https://twitter.com/dan_abramov/status/1021850499618955272)[^1], this pattern let's you ergonomically choose between built-in behaviors and custom ones to fit the needs of every use-case in your app.
-[^1]: See [this article](https://varun.ca/flattening-deep-hierarchies-of-components/) for more on composing components
+Like the power to [compose components](https://twitter.com/dan_abramov/status/1021850499618955272)[^2], this pattern let's you ergonomically choose between built-in behaviors and custom ones to fit the needs of every use-case in your app.
+[^2]: See [this article](https://varun.ca/flattening-deep-hierarchies-of-components/) for more on composing components
+
+**Nota Bene**: we've been asserting that there is **1** obvious, default behavior, but notice that this pattern scales gracefully.
+There is nothing preventing us from writing multiple hooks for multiple pre-packaged behaviors.
+
+## Off the hook
+
+Finally, we can decouple our behavior from hooks (and any 1 particular state management e.g. Redux, React Context, etc...) by shipping behavior as pure functions too!
+
+I recommend writing a function that accepts the current state and produces the next state.[^3]
+[^3]: Similar to a Redux reducer, but not *quite*. Reducers accept `(state, action)` whereas here we accept only `(state)` since the `action` is encoded as the particular function (e.g. `toggle`)
+
+
+```jsx
+// Checkbox.js
+
+// pure function! state -> state
+export function toggle(state) {
+  return !state
+}
+
+// as a hook for convenience
+export function useToggle(start=False) => {
+    const [value, setValue] = useState(start)
+    const onChange = () => setValue(toggle(value))
+    return { value, onChange }
+  }
+}
+```
+
+For example, now we can use this behavior in Redux:
+
+```javascript
+// reducer.js
+import { toggle } from './Checkbox'
+
+function reducer(state, action) {
+  switch(action.type) {
+    case TOGGLE:
+      return toggle(state)
+    // other actions omitted
+  }
+}
+
+export default reducer
+```
+
+If this example seems contrived, it is.
+`toggle` is too simple a behavior to warrant a shareable function, but imagine cases where computing the next state is not trivial.
+
+
+## Coupling under your control
+
+You might argue:
+> But if I know the default behavior for something, why not ship with an uncontrolled component that includes that behavior?
+> I don't want to rewire the same, default behavior over and over.
+> That's too tedious...
+
+If you find yourself constantly wiring the same behavior to the same component, you've discovered something about your use-case!
+Maybe that coupling *should* be promoted to be a concept unto itself, and then yes, you can pre-couple that behavior and rendering into a stateful component for reuse.
+
+But the point is that *you* are in control of that, its not a pre-coupling that happened somewhere that you can't reach.
+As a user of a library, its much easier to create a new coupling (via composition) than it is to detangle part of the library (if you've ever had to wrangle `ref`s and callbacks you know what I mean).
 
 ## FP?
 
@@ -297,4 +365,4 @@ Composing behavior is the central tenet of [Functional Programming](https://en.w
 It makes me happy to see [React borrowing from FP](https://overreacted.io/algebraic-effects-for-the-rest-of-us/#a-note-on-purity) more and more where it makes sense.
 No need to reinvent the wheel for composable behavior.
 
-Ship functions (as hooks) alongside stateless, controlled components and let the user compose their symphony. :rocket:
+Ship behavior (as functions/hooks) alongside stateless, controlled components and let the user compose their symphony. :rocket:
