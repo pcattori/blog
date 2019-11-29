@@ -1,6 +1,7 @@
 ---
 title: "Composable Behavior with React Hooks"
 date: 2019-11-14T21:07:19-05:00
+lastmod: 2019-11-29T23:04:45-05:00
 tags: [React]
 ---
 
