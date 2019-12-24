@@ -11,6 +11,7 @@ title404 = "Nothing's here!"
 
 [params.assets]
 favicon = "favicon.ico"
+customCSS = ["css/custom.css"]
 
 [params.copyright]
 holder = "Pedro Cattori"
