@@ -1,6 +1,7 @@
 ---
 title: "Tidy Processes in Python"
 date: 2019-11-07T20:12:00-05:00
+lastmod: 2020-02-15T12:48:00-00:00
 tags: [Python]
 ---
 
@@ -58,7 +59,7 @@ The Flask server from the first run is still running, causing new runs to crash 
 
 ## Solution
 
-The solution is to recursively kill all the children processes :skull::[^1]
+The solution is to recursively kill :skull: all the children processes:[^1]
 [^1]: Yikes, OS programming is violent...
 
 ```python
@@ -80,7 +81,7 @@ def tidy_process(*args, **kwargs):
         proc.kill()
 ```
 
-Note the use of `@contextmanager` in conjunction with `try`/`finally` blocks that guarantee that the process (and its descendant processes) are killed even if an exception occurs in the calling code.
+Note the use of `@contextmanager` in conjunction with `try` / `finally` blocks that guarantee that the process (and its descendant processes) are killed even if an exception occurs in the calling code.
 
 If you aren't familiar with [context managers](https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager), I highly recommend [Raymond Hettinger's introduction to them](https://youtu.be/OSGv2VnC0go?t=2365).
 
@@ -95,5 +96,5 @@ with open('out.log', 'w') as out, open('err.log', 'w') as err:
         0 / 0 # still tidy, even when exceptions occur
 ```
 
-Here, I log `stdout`/`stderr` of the subprocess to files.
+Here, I log `stdout` / `stderr` of the subprocess to files.
 Not necessary, but convenient for debugging :bug:.
