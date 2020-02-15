@@ -1,12 +1,12 @@
 ---
 title: "Composable Behavior with React Hooks"
 date: 2019-11-14T21:07:19-05:00
-lastmod: 2019-11-29T23:04:45-05:00
+lastmod: 2020-02-15T12:45:00-00:00
 tags: [React]
 ---
 
 When I first learned [React](https://reactjs.org/) :atom:, it took me less than a day to run into the ol' ["controlled vs uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html) dichotomy.
-At the time, I didn't even know the terms "controlled" and "uncontrolled", but was still struggling to fit the designs in my head into those two buckets.
+At the time, I didn't know the terms "controlled" and "uncontrolled", but was still struggling to fit my designs into these two buckets.
 
 The tension was between 2 competing goals:
 
@@ -44,10 +44,10 @@ The tension becomes apparent as I kept adding more and more props to my componen
 It looked ugly and quickly became unmaintainable.
 
 Maybe writing *truly* reusable UI components is a fool's errand.
-I gave up on finding a better way for a while and settled into writing mostly controlled components wired to Redux.
+I gave up on finding a better way and settled into writing mostly controlled components wired to Redux.
 But every time I wrote Redux code just to enable obvious, default behavior (e.g. "toggling a checkbox", "writing characters into a text input"), I longed again for a better way.
 
-I'd be lying if I pretended my persistence to find a better way wasn't tied up in my ego as a developer.
+My persistence to find a better way was tied up with my ego as a developer.
 I took pride in writing clean, reusable code in scripts and backend code.
 But here I was wrestling with a humble checkbox...
 Surely, any great software engineer should be able to write reusable UI components, no?
@@ -114,7 +114,7 @@ const App = () => {
 
 ---
 
-A *controlled* `<input/>` needs to be wired up, but gives you the flexibility to have the `<input/>` react to other events. For example, if the `<input/>` is being used as a search box, you could wire up your app so that clicking a **Clear filters** button also wipes out the text in the `<input/>`.
+A *controlled* `<input/>` needs to be wired up, but gets flexibility to react to other events. For example, if the `<input/>` is used as a search box, you could wire up your app so that clicking a **Clear filters** button also wipes out the text in the `<input/>`.
 
 ```jsx
 // ControlledInput.jsx
@@ -198,7 +198,7 @@ export function useDefaultBehavior(startingText='') {
 ```
 
 The design here is to create a hook that returns a JS object in the same shape as our component props and delivers the default behavior for our component.
-Note that React hooks must have [names starting with "use"](https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook).
+(Note that React hooks must have [names starting with "use"](https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook).)
 
 Now we can just combine these 2 into 1 file:
 
