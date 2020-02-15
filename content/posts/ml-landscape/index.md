@@ -1,11 +1,12 @@
 ---
 title: "The Machine Learning Landscape"
 date: 2019-12-20T19:09:01-05:00
+lastmod: 2020-02-15T11:50:00-05:00
 tags: [Machine Learning]
 ---
 
 In this blog post, I will introduce Machine Learning (ML).
-If you want to get deeper or study any of these topics more rigorously, just reach out.
+If you want to get deeper on any of these topics, just reach out.
 
 # AI & ML
 
@@ -19,15 +20,16 @@ Deep Learning is a subset of ML and will be discussed at the end of this post.
 **AI** is “intelligence demonstrated by machines...that mimic cognitive functions that humans associate with the human mind, such as learning and problem solving”.[^1]
 Informally:
 > AI systems **seem smart**.[^2]
-[^2]: The famous [Turing Test](https://en.wikipedia.org/wiki/Turing_test) posits that “seeming smart” is the same as “being smart”
 
 [^1]: from the [Wikipedia definition for AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
+[^2]: The famous [Turing Test](https://en.wikipedia.org/wiki/Turing_test) posits that “seeming smart” is the same as “being smart”
 
 If you think this is a mushy, ambiguous definition, you would be correct.
 If you are looking for a more rigorous definition, be prepared to fail.
 There isn’t one.
 
 The [fathers of AI](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)#Contributions_in_computer_science), John McCarthy and Marvin Minksy, coined the term AI in 1955 to mean "making a machine behave in ways that would be called intelligent if a human were so behaving".[^3]
+
 [^3]: from [A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html)
 
 {{< figure src="john-mccarthy.jpg" caption="John McCarthy" >}}
@@ -75,10 +77,10 @@ The human acts as the “supervisor”, giving the machine the correct example o
 
 > ...cannot get smarter without **manual tuning**
 
-Simple clustering algorithms fit in this bucket.
-Anything beyond simple clustering is still being researched but not used widely in industry.
 “Unsupervised Learning” is a misnomer in that no learning is taking place.
 These systems **do not learn** from observations nor experience, so changing the code or tuning parameters manually are the main ways to make Unsupervised Learning systems smarter.
+Simple clustering algorithms fit in this bucket.
+Anything beyond simple clustering is still being researched but not used widely in industry.
 
 **Example**: Netflix groups similar movies into custom genres.
 
@@ -99,7 +101,7 @@ Reinforcement learning is still studied in cutting-edge research and is not wide
 
 # A note on Deep Learning
 
-You’ve probably heard of “Deep Learning”. Right now, Deep Learning is all the rage because of its record-breaking smartness on known ML benchmarks, such as  image classification (e.g. “Is there a cat in this photo?”).
+You’ve probably heard of “Deep Learning”. Right now, Deep Learning is popular because of its record-breaking smartness on known ML benchmarks, such as  image classification (e.g. “Is there a cat in this photo?”).
 
 Philosophically, Deep Learning is about **learning features** of the data first and then using those features to learn how to do well on the original task.
 
