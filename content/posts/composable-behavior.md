@@ -6,7 +6,7 @@ tags: [React]
 ---
 
 When I first learned [React](https://reactjs.org/) :atom:, it took me less than a day to run into the ol' ["controlled vs uncontrolled components"](https://reactjs.org/docs/uncontrolled-components.html) dichotomy.
-At the time, I didn't know the terms "controlled" and "uncontrolled", but was still struggling to fit my designs into these two buckets.
+At the time, I didn't know the terms "controlled" and "uncontrolled", but still struggled to fit my designs into these two buckets.
 
 The tension was between 2 competing goals:
 
