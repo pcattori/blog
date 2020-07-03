@@ -101,7 +101,7 @@ This may seem like a shot in the dark. And it is!
 
 We don't expect this to work, but exploring this construction will give us insight to what the answer should be.
 
-{{< katex inline >}}f = MM{{< /katex >}} implies {{< katex inline >}}f = M{{< /katex >}} (because {{< katex inline >}}f = Mf{{< /katex >}}).
+Assuming {{< katex inline >}}f = MM{{< /katex >}} implies {{< katex inline >}}f = M{{< /katex >}} (because {{< katex inline >}}f = Mf{{< /katex >}}).
 How far is this from the truth?
 
 Looking at our Python examples, we know that `f` is not the same function as `M`, but there is a lot of overlap!
