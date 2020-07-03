@@ -146,14 +146,32 @@ M = \lambda r ...r...r...
 \therefore M' = \lambda x.M(xx)
 {{< /katex >}}
 
+{{< katex >}}
+\therefore f = (\lambda x.M(xx))(\lambda x.M(xx))
+{{< /katex >}}
+
 **Step 6:**
 
-Finally, given {{< katex inline >}}M{{< /katex >}} we can define {{< katex inline >}}f{{< /katex >}}:
+Can we generalize this approach for _any_ recursive function? Yes!
+
+Starting with the expression:
 
 {{< katex >}}
-f = \lambda m.(\lambda x.m(xx))(\lambda x.m(xx))
+f = (\lambda x.M(xx))(\lambda x.M(xx))
+{{< /katex >}}
+
+we can factor out {{< katex inline >}}M{{< /katex >}} as a parameter to define the Y-combinator:
+
+{{< katex >}}
+\Upsilon = \lambda m.(\lambda x.m(xx))(\lambda x.m(xx))
+{{< /katex >}}
+
+For any recursive function {{< katex inline >}}f{{< /katex >}}, we can extract its non-recursive logic {{< katex inline >}}M{{< /katex >}} like we did in our Python example.
+Then we simply pass {{< katex inline >}}M{{< /katex >}} into the Y-combinator to define {{< katex inline >}}f{{< /katex >}}.
+
+{{< katex >}}
+f = \Upsilon M = (\lambda m.(\lambda x.m(xx))(\lambda x.m(xx)))M
 {{< /katex >}}
 
 Philosophically, the variable {{< katex inline >}}m{{< /katex >}} encodes all interesting parts of {{< katex inline >}}f{{< /katex >}}'s implementation.
-
 The rest of this expression just plumbs through the recursion.
