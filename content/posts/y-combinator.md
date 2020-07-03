@@ -47,7 +47,7 @@ etc..
 
 Here we use {{< katex inline >}}...{{< /katex >}} to denote any lambda calculus expression.
 
-For our example, we have two self-references (`fib(n - 1)` and `fib(n - 2)`), but our analysis will hold for any number of self-references.
+For our example, we have two self-references (`f(n - 1)` and `f(n - 2)`), but our analysis will hold for any number of self-references.
 
 {{< katex >}}
 f = ...f...f...
