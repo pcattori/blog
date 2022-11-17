@@ -111,18 +111,19 @@ export const handler = rest.get(
 
 ## The Remix "global" trick
 
-Now that you have your MSW fake server setup, you could simply create a server instance and start it within your `entry.server.tsx`:
+Now that you have your MSW fake server setup, you could simply create a server instance and start it within your `entry.server.tsx`:[^msw-env-var]
 
 ```ts
+// app/entry.server.tsx
 import { setup, start } from "../msw/server"
 
-// app/entry.server.tsx
 if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
   let server = setup()
   start(server)
 }
-
 ```
+
+[^msw-env-var]: You could also make a dedicated MSW environment variable if you want the flexibility to run in dev mode with and without faking APIs. For example, if you wanted dev builds that were easier to debug, but wanted to try hitting your actual CMS.
 
 But, Remix live reloads your server during development, so you'll end up creating multiple instances of your MSW server and likely get warnings about it.
 
@@ -158,6 +159,9 @@ export const startOnce = () => {
 This ensures we only setup and start our MSW server once everytime the server spins up, even if live reloads happen.[^node-api-for-dev-server]
 
 [^node-api-for-dev-server]: I've made a [proposal for a Node API for the Remix compiler and dev server](https://github.com/remix-run/remix/discussions/4547) which would let us more precisely purge the require cache. I _think_ that would make the "global" trick obsolete.
+
+The awesome thing about this approach is that its universal.
+It also works for Javascript or Typescript and it works for _any_ dev server.
 
 ## Further reading
 
