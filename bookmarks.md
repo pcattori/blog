@@ -1,0 +1,13 @@
+- [Stop Writing Classes](https://www.youtube.com/watch?v=o9pEzgHorH0) by Jack Diedrich
+- [The Wet Codebase](https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase) by Dan Abramov
+- [The Life of a File](https://www.youtube.com/watch?v=XpDsk374LDE) by Evan Czaplicki
+- [The Value of Values](https://www.youtube.com/watch?v=-6BsiVyC1kM) by Rich Hickey
+- [Simplicity Matters](https://www.youtube.com/watch?v=rI8tNMsozo0) by Rich Hickey
+- [Rethinking Design Practices](https://www.youtube.com/watch?v=xxbc3wAztl0) by Mark Dalgleish
+- [Capsize](https://seek-oss.github.io/capsize/) by Mark Dalgleish
+- [Cruddy by Design](https://www.youtube.com/watch?v=MF0jFKvS4SI) by Adam Wathan
+- [CSS Utility Classes and "Separation of Concerns"](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/) by Adam Wathan
+- [Shape Up](https://basecamp.com/shapeup) by Ryan Singer
+- [Logging Best Practices](https://tuhrig.de/my-logging-best-practices/) by Thomas Uhrig
+- [So You Think You Can Build A Dropdown](https://www.youtube.com/watch?v=pcMYcjtWwVI) by Pedro Duarte
+- [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) by Philip Roberts
