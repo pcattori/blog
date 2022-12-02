@@ -11,3 +11,4 @@
 - [Logging Best Practices](https://tuhrig.de/my-logging-best-practices/) by Thomas Uhrig
 - [So You Think You Can Build A Dropdown](https://www.youtube.com/watch?v=pcMYcjtWwVI) by Pedro Duarte
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) by Philip Roberts
+- [Why Concatenative Programming Matters](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html) by Jon Purdy
