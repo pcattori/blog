@@ -13,3 +13,7 @@
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) by Philip Roberts
 - [Why Concatenative Programming Matters](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html) by Jon Purdy
 - [Be good-argument-driven, not data-driven](http://twitchard.github.io/posts/2022-08-26-metrics-schmetrics.html) by Richard Marmorstein
+- [Taming Names in Software Development](https://www.simplethread.com/taming-names-in-software-development/) by Joseph Glass
+- [Is Dark Mode Good For Your Eyes?](https://kevquirk.com/is-dark-mode-such-a-good-idea/) by Kev Quirk
+- [The Grug Brained Developer](https://grugbrain.dev/) by Carson Gross
+- [Tree-sitter - a new parsing system for programming tools](https://www.youtube.com/watch?v=Jes3bD6P0To) by Max Brunsfeld
