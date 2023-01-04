@@ -231,5 +231,7 @@ const hello = (world: string) => 'Hello ' + world
 main()
 ```
 
+In fact, [`function` hoisting can make things harder to understand](https://twitter.com/wesbos/status/1601312464485892097).
+
 For me, it's extremely rare to run into hoisting issues and when I do they're easily solved by the strategies above.
 Definitely worth it to keep using the beautiful affordances of arrow functions.
