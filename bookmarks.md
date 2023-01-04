@@ -18,3 +18,4 @@
 - [The Grug Brained Developer](https://grugbrain.dev/) by Carson Gross
 - [Tree-sitter - a new parsing system for programming tools](https://www.youtube.com/watch?v=Jes3bD6P0To) by Max Brunsfeld
 - [Propositions as Types](https://www.youtube.com/watch?v=IOiZatlZtGU) by Philip Wadler
+- [Railway oriented programming](https://www.youtube.com/watch?v=fYo3LN9Vf_M) by Scott Wlaschin
