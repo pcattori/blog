@@ -17,3 +17,4 @@
 - [Is Dark Mode Good For Your Eyes?](https://kevquirk.com/is-dark-mode-such-a-good-idea/) by Kev Quirk
 - [The Grug Brained Developer](https://grugbrain.dev/) by Carson Gross
 - [Tree-sitter - a new parsing system for programming tools](https://www.youtube.com/watch?v=Jes3bD6P0To) by Max Brunsfeld
+- [Propositions as Types](https://www.youtube.com/watch?v=IOiZatlZtGU) by Philip Wadler
