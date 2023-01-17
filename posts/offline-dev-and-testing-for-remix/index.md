@@ -59,7 +59,7 @@ What I don't like about this is that you're back to [testing implementation deta
 **Faking** is about creating a _completely new_ implementation for an interface that takes shortcuts where necessary, focusing solely on parts relevant to your dev or test environment.
 Faking respects interface boundaries that already exist in your app and plugs in a _fake_ implementation.
 
-<img src="./images/mocking_vs_faking_meme.webp">
+![Drake meme: no to "mocking the network", yes to "faking APIs"](./images/mocking_vs_faking_meme.webp)
 
 You may disagree with these definitions and that's fine.
 The labels we use aren't the interesting part, but rather the behavior.

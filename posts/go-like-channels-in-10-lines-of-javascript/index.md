@@ -29,13 +29,13 @@ It's just a value we need to coordinate the handoff for between the browser buil
 
 Right now we have to wait for `compileBrowser` to finish before we even pass `assetsManifest` to `compileServer`:
 
-<img src="./images/sync.webp"/>
+![Sequence diagram showing browser compilation and server compilation running in sequence](./images/sync.webp)
 
 There's no hope of concurrency if we stick with this approach.
 
 Ideally, `compileBrowser` and `compileServer` could initially run concurrently, then the server waits until the browser build produces the assets manifest, and then they can finish concurrently:
 
-<img src="./images/async.webp">
+![Sequence diagram showing browser compilation and server compilation running in parallel](./images/async.webp)
 
 Javascript has callbacks, promises, and `async`/`await` for concurrency.
 I _could_ have used those, but they all felt like the wrong tool.
