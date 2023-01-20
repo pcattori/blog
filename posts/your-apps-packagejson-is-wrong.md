@@ -41,7 +41,7 @@ There's already too many places to put your app's name (your repo name, README t
 so don't add yet another place in your `package.json`.
 That just makes it more confusing when all those name end up being different.
 
-## ...unless
+## Unless...
 
 If you need a central place to put your app's metadata where you will _programmatically_ access it, then I won't judge you for putting it in `package.json`.
 For example, if you wanted to templetize your docs so that your app's name and version came directly from the `name` and `version` fields in `package.json`.
