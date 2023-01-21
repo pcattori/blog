@@ -20,3 +20,4 @@
 - [Propositions as Types](https://www.youtube.com/watch?v=IOiZatlZtGU) by Philip Wadler
 - [Railway oriented programming](https://www.youtube.com/watch?v=fYo3LN9Vf_M) by Scott Wlaschin
 - [Lambda Calculus from the Ground Up](https://www.youtube.com/watch?v=pkCLMl0e_0k) by David Beazley
+- [Maybe Not](https://www.youtube.com/watch?v=YR5WdGrpoug) by Rich Hickey
