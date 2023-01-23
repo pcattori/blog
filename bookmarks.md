@@ -21,3 +21,4 @@
 - [Railway oriented programming](https://www.youtube.com/watch?v=fYo3LN9Vf_M) by Scott Wlaschin
 - [Lambda Calculus from the Ground Up](https://www.youtube.com/watch?v=pkCLMl0e_0k) by David Beazley
 - [Maybe Not](https://www.youtube.com/watch?v=YR5WdGrpoug) by Rich Hickey
+- [You Can't Not Have a Framework](https://blog.ryanflorence.com/you-cant-not-have-a-framework.html) by Ryan Florence
