@@ -16,7 +16,7 @@ Then only add what you need, like `scripts` and `dependencies`.[^dependencies]
 
 ## Why `private`?
 
-It's for declaring that you are [not going to publish this package](conveying) on [npm](https://www.npmjs.com/).
+It's for declaring that you are [not going to publish this package](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#private) on [npm](https://www.npmjs.com/).
 Which is the case for 99.999% of apps.[^npm-app]
 [^npm-app]: If you know of a good use-case for publishing an app, I'd love to hear about it!
 So definitely use `private` for your apps.
