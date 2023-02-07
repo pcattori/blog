@@ -3,6 +3,8 @@
 When you start a new ~job~ adventure, create a `memories` folder for it.
 Then, whenever you're excited/proud/happy about your work, screenshot it and stick it into `memories`.
 
+![A folder called "Memories" with screenshots inside](./images/memories-folder.png)
+
 When you feel demotivated or unconfident, take a peek at your `memories`.
 Seeing those victories will help you **remember that you are awesome**.
 
