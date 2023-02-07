@@ -6,18 +6,20 @@ Then, whenever you're excited/proud/happy about your work, screenshot it and sti
 ![A folder called "Memories" with screenshots inside](./images/memories-folder.png)
 
 When you feel demotivated or unconfident, take a peek at your `memories`.
-Seeing those victories will help you **remember that you are awesome**.
+Seeing those victories will help you **remember that you are awesome**. 🤩
 
 You're so awesome in fact that you probably deserve a raise!
 Luckily, your `memories` are also a list of your achievements,
-so call on them when you **negotiate that promotion** with your boss.
+so call on them when you **negotiate that promotion** with your boss. 🤑
 
 Finally, when it's time for you to move on to your next thing,
-**write a kickass goodbye email** where you share your favorite `memories`.[^discovering-memories]
+**write a kickass goodbye email** where you share your favorite `memories`.[^discovering-memories] 😎
 
 [^discovering-memories]:
     I discovered `memories` when a coworker wrote _their_ kickass goodbye email.
     Now, I'm paying it forward to you.
+
+---
 
 To give you an idea, here are some of the things in my `Remix memories` folder.
 A mix of small wins, funny quirks, and seeing others enjoy what I've built.
