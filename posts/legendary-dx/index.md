@@ -6,7 +6,7 @@ In this talk, I introduce the next step in web DX:
 
 🔥 **Hot Data Revalidation** 🔥
 
-[![Me standing on the stage at Remix Conf 2023](./images/thumbnail.webp)](https://www.youtube.com/watch?v=79M4vYZi-po)
+[![A triforce symbol with 🤩 on top corner, 🤓 on left corner, and 😎 on right corner](./images/thumbnail.webp)](https://www.youtube.com/watch?v=79M4vYZi-po)
 
 You can also [check out the slides](https://slides.com/pcattori/legendary-dx).
 
