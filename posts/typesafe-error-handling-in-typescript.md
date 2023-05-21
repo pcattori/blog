@@ -74,7 +74,7 @@ I stick to using `Error`s whenever I'm throwing, but need a small patch like `as
 
 ## Custom errors
 
-If you have a custom error type that is more specific than `Error`, you can further narrow the type with a typeguard:
+If you have a custom error type that is more specific than `Error`, you can further narrow the type with a typeguard or `instanceof` check:
 
 ```ts
 class CustomError extends Error {
@@ -85,23 +85,16 @@ class CustomError extends Error {
   }
 }
 
-// typeguard for CustomError
-let isCustomError = (error: Error) error is CustomError => {
-  return "data" in error && typeof error.data === 'object'
-}
-
 try {
   // do some stuff
 } catch (thrown) {
-
-  let error = asError(thrown)
-  if (isCustomError(error)) {
+  let error = asError(thrown);
+  if (error instanceof CustomError) {
     console.error(error.data);
     //            ^? CustomError
-    return
+    return;
   }
-
-  throw thrown
+  throw thrown;
 }
 ```
 
