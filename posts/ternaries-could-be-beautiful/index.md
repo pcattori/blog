@@ -186,6 +186,10 @@ You're lookin' good!
 
 ![Fade between adding, moving, and deleting cases for ternaries](./beautiful-ternaries.gif)
 
+And I'm not the only one that thinks so:
+
+[![@mjackson confessing I've converted him to this format](./mjackson-tweet.png)][mjackson-tweet]
+
 Ok ok, that's all well and good for our simple example.
 But how well does this technique scale in real code?
 
@@ -334,3 +338,4 @@ so if you agree with me [make yourself heard][prettier-feedback]!
 [pattern-matching]: https://ocaml.org/docs/tour-of-ocaml#pattern-matching-contd
 [tc39-pattern-matching]: https://github.com/tc39/proposal-pattern-matching
 [arktype-parse-operator]: https://github.com/arktypeio/arktype/blob/dcf34031eb2d8bf41e35cdd66e6d77e19f6c8868/src/parse/string/shift/operator/operator.ts#L11-L30
+[mjackson-tweet]: https://twitter.com/mjackson/status/1732562485583241587
