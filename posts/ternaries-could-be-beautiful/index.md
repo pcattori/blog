@@ -5,7 +5,7 @@ Stumbled on this tweet the other day:
 [![@trashh_dev tweet about ternary formatting](./tweet.png)][tweet]
 
 Look, I don't think ternaries are evil.
-Sometimes you just want conditions expressions, so you can't use early returns nor [`switch(true)`][switch-true],
+Sometimes you just want conditional expressions, so you can't use early returns nor [`switch(true)`][switch-true],
 like when your writing [conditional types in TypeScript][conditional-types].
 Plus you don't want to go through the hassle of [IIFE][iife]s either.
 In other languages, you might reach for [pattern matching][pattern-matching], but JavaScript doesn't have that ([yet][tc39-pattern-matching]).
